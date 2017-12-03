@@ -1,14 +1,41 @@
 ﻿using System;
 using System.Globalization;
-using System.Numerics;
 using System.Security.Cryptography;
 using System.Text;
+using Org.BouncyCastle.Asn1.Sec;
 
 namespace CounterKeygen.Helpers
 {
     public class BitcoinKeyHelper
     {
         static SHA256Managed _hashstring = new SHA256Managed();
+
+        public static byte[] GeneratePublicKey(byte[] privateKey)
+        {
+            Org.BouncyCastle.Math.BigInteger privateKeyInt = new Org.BouncyCastle.Math.BigInteger(+1, privateKey);
+
+            var parameters = SecNamedCurves.GetByName("secp256k1");
+            Org.BouncyCastle.Math.EC.ECPoint point = parameters.G.Multiply(privateKeyInt);
+
+            byte[] pubKeyX = point.X.ToBigInteger().ToByteArrayUnsigned();
+            //byte[] pubKeyY = point.Y.ToBigInteger().ToByteArrayUnsigned();
+
+            byte[] pubKey = new byte[pubKeyX.Length + 1];
+
+            // Copy pub key X over to pubKey
+            pubKeyX.CopyTo(pubKey, 1);
+
+            // Setup the parity byte
+            if (point.Y.ToBigInteger().Mod(new Org.BouncyCastle.Math.BigInteger("2")) == new Org.BouncyCastle.Math.BigInteger("1")) {
+                pubKey[0] = 0x03;
+            } else {
+                pubKey[0] = 0x02;
+            }
+
+            // Return the public key
+            //return Tuple.Create(pubKeyX, pubKeyY);
+            return pubKey;
+        }
 
         public static string CreateAddress(string PublicKey)
         {
@@ -25,8 +52,8 @@ namespace CounterKeygen.Helpers
         {
             const string CHARACTERS = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
             string retString = string.Empty;
-            BigInteger encodeSize = CHARACTERS.Length;
-            BigInteger arrayToInt = 0;
+            System.Numerics.BigInteger encodeSize = CHARACTERS.Length;
+            System.Numerics.BigInteger arrayToInt = 0;
             for (int i = 0; i < array.Length; ++i)
             {
                 arrayToInt = arrayToInt * 256 + array[i];

@@ -1,14 +1,22 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+    "signature": "319700f3950be1cfaf2828f8b81999aa0779b170"
   },
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v2.0": {
       "CounterKeygen/1.0.0": {
+        "dependencies": {
+          "BouncyCastle": "1.8.1"
+        },
         "runtime": {
           "CounterKeygen.dll": {}
+        }
+      },
+      "BouncyCastle/1.8.1": {
+        "runtime": {
+          "lib/BouncyCastle.Crypto.dll": {}
         }
       }
     }
@@ -18,6 +26,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "BouncyCastle/1.8.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-r0w4ciJJ916V3dYRdtq8uF4Nz6oAv8Mia1JEAPKgDDRzMTcht8uK/Qam9WtvIg9SaFa+4OTox+GG6huB07nC1g==",
+      "path": "bouncycastle/1.8.1",
+      "hashPath": "bouncycastle.1.8.1.nupkg.sha512"
     }
   }
 }

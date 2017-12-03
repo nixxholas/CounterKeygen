@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Cryptography;
 using System.Text;
 using CounterKeygen.Helpers;
 
@@ -50,13 +51,24 @@ namespace CounterKeygen
                 //Console.WriteLine(BitConverter.ToString(doubleSha256).Replace("-", "").ToLower());
 
                 // Copy the array over
+                // https://stackoverflow.com/questions/733243/how-to-copy-part-of-an-array-to-another-array-in-c
                 Array.Copy(doubleSha256, 0, modifiedSha256, modifiedSha256.Length - 4, 4);
 
                 // Debugging
-                //Console.WriteLine(BitConverter.ToString(modifiedSha256).Replace("-", "").ToLower());
+                Console.WriteLine("Your Private Key is:" + BitConverter.ToString(modifiedSha256).Replace("-", "").ToLower());
+
+                // Step 3: Base58 Encode the completed Hash
 
                 // Base58 Encode the private key (This is a reversible encoding process)
+                // aka Wallet Import Format
                 string encodedPrivateKey = BitcoinKeyHelper.Base58Encode(modifiedSha256);
+
+                Console.WriteLine("Your Base58 Encoded Private Key is: " + encodedPrivateKey);
+
+                // Step 4: Generate the public key via ECD
+                byte[] pubKey = BitcoinKeyHelper.GeneratePublicKey(modifiedSha256);
+
+                Console.WriteLine("Your Public Key is: " + BitConverter.ToString(pubKey).Replace("-", "").ToLower());
             }
         }
     }
