@@ -1,0 +1,10 @@
+/Users/nixholas/Projects/CounterKeygen/bin/Debug/netcoreapp2.0/CounterKeygen.deps.json
+/Users/nixholas/Projects/CounterKeygen/bin/Debug/netcoreapp2.0/CounterKeygen.runtimeconfig.json
+/Users/nixholas/Projects/CounterKeygen/bin/Debug/netcoreapp2.0/CounterKeygen.runtimeconfig.dev.json
+/Users/nixholas/Projects/CounterKeygen/bin/Debug/netcoreapp2.0/CounterKeygen.dll
+/Users/nixholas/Projects/CounterKeygen/bin/Debug/netcoreapp2.0/CounterKeygen.pdb
+/Users/nixholas/Projects/CounterKeygen/obj/Debug/netcoreapp2.0/CounterKeygen.csproj.CoreCompileInputs.cache
+/Users/nixholas/Projects/CounterKeygen/obj/Debug/netcoreapp2.0/CounterKeygen.AssemblyInfoInputs.cache
+/Users/nixholas/Projects/CounterKeygen/obj/Debug/netcoreapp2.0/CounterKeygen.AssemblyInfo.cs
+/Users/nixholas/Projects/CounterKeygen/obj/Debug/netcoreapp2.0/CounterKeygen.dll
+/Users/nixholas/Projects/CounterKeygen/obj/Debug/netcoreapp2.0/CounterKeygen.pdb

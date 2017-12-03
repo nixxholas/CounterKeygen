@@ -1,0 +1,15 @@
+﻿<Properties StartupConfiguration="{A7A8D024-32D1-438F-A44C-1D73BC0FF92D}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Program.cs">
+    <Files>
+      <File FileName="Helpers/BitcoinKeyHelper.cs" Line="127" Column="10" />
+      <File FileName="Program.cs" Line="30" Column="45" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.CounterKeygen PreferredExecutionTarget="MonoDevelop.Default" />
+</Properties>
