@@ -1,8 +1,8 @@
 ﻿<Properties StartupConfiguration="{A7A8D024-32D1-438F-A44C-1D73BC0FF92D}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Helpers/BitcoinKeyHelper.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Program.cs">
     <Files>
-      <File FileName="Helpers/BitcoinKeyHelper.cs" Line="14" Column="46" />
-      <File FileName="Program.cs" Line="43" Column="55" />
+      <File FileName="Helpers/BitcoinKeyHelper.cs" Line="23" Column="56" />
+      <File FileName="Program.cs" Line="11" Column="10" />
       <File FileName="../../.nuget/packages/bouncycastle/1.8.1/Readme.txt" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
