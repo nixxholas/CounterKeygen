@@ -18,7 +18,10 @@ namespace CounterKeygen.Helpers
             Org.BouncyCastle.Math.EC.ECPoint point = parameters.G.Multiply(privateKeyInt);
 
             byte[] pubKeyX = point.X.ToBigInteger().ToByteArrayUnsigned();
-            //byte[] pubKeyY = point.Y.ToBigInteger().ToByteArrayUnsigned();
+            byte[] pubKeyY = point.Y.ToBigInteger().ToByteArrayUnsigned();
+
+            Console.WriteLine("Your X point on the Elliptic Curve is: " + Encoding.Unicode.GetString(pubKeyX));
+            Console.WriteLine("Your Y point on the Elliptic Curve is: " + Encoding.Unicode.GetString(pubKeyY));
 
             byte[] pubKey = new byte[pubKeyX.Length + 1];
 

@@ -8,3 +8,4 @@
 /Users/nixholas/Projects/CounterKeygen/obj/Debug/netcoreapp2.0/CounterKeygen.AssemblyInfo.cs
 /Users/nixholas/Projects/CounterKeygen/obj/Debug/netcoreapp2.0/CounterKeygen.dll
 /Users/nixholas/Projects/CounterKeygen/obj/Debug/netcoreapp2.0/CounterKeygen.pdb
+/Users/nixholas/Projects/CounterKeygen/obj/Debug/netcoreapp2.0/CounterKeygen.csprojResolveAssemblyReference.cache

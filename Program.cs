@@ -1,7 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using CounterKeygen.Helpers;
+using CounterKeygen.Utils;
+using Newtonsoft.Json.Linq;
 
 namespace CounterKeygen
 {
@@ -9,7 +13,8 @@ namespace CounterKeygen
     {
         static void Main(string[] args)
         {
-            while (true) {
+            while (true)
+            {
                 Console.WriteLine("Hi there! Welcome to the Bitcoin key generator");
                 Console.WriteLine("==============================================");
                 Console.WriteLine("Please select an option:");
@@ -18,24 +23,34 @@ namespace CounterKeygen
                 Console.WriteLine("2 - Create BIP32 Compliant Keys");
                 Console.WriteLine("3 - Create BIP44 Private Keys");
                 Console.WriteLine("4 - Generate a child key from an X Key");
+                Console.WriteLine("5 - Sign a bitcore wallet service request");
                 Console.WriteLine();
                 Console.WriteLine("0 - Exit");
 
-                while (true) {
+                while (true)
+                {
                     string choice = Console.ReadLine();
                     int result = 0;
 
                     if (int.TryParse(choice, out result))
                     {
-                        if (result == 0) {
+                        if (result == 0)
+                        {
                             Console.WriteLine("Goodbye!");
                             Environment.Exit(0);
                         }
 
-                        switch (result) {
+                        switch (result)
+                        {
                             case 1:
                                 Console.Clear();
                                 loadCreateBasicKeys();
+                                Console.Clear();
+
+                                goto BREAK;
+                            case 5:
+                                Console.Clear();
+                                SignBWSRequest();
                                 Console.Clear();
 
                                 goto BREAK;
@@ -50,11 +65,12 @@ namespace CounterKeygen
                     }
                 }
 
-                BREAK:;
+            BREAK:;
             }
         }
 
-        private static void loadCreateBasicKeys() {
+        private static void loadCreateBasicKeys()
+        {
             Console.WriteLine("Generating a random key...");
             Console.WriteLine("==============================================");
             Console.WriteLine("Please save all the data below!");
@@ -126,6 +142,31 @@ namespace CounterKeygen
 
                 Console.ReadKey();
             }
+        }
+        
+        private static void SignBWSRequest()
+        {
+            Console.WriteLine("Please enter the type of the method [i.e. post, put]: ");
+            string method = Console.ReadLine();
+            Console.WriteLine("Please enter the URL of the request: ");
+            string url = Console.ReadLine();
+            Console.WriteLine("Please enter the JSON parsed body of the PUT/POST request: ");
+            string args = Console.ReadLine();
+            Console.WriteLine("Please enter the private key to sign this request: ");
+            string privKey = Console.ReadLine();
+
+            BitcoreSignatureHelper bsh = new BitcoreSignatureHelper();
+
+            Console.WriteLine("");
+            Console.WriteLine("==============================================");
+            Console.WriteLine("Generating the signed request...");
+            string result = bsh.SignRequest(method, url, args, privKey);
+            Console.WriteLine("");
+            Console.WriteLine("");
+
+
+            Console.WriteLine("Please copy it and click any key to return to the menu!");
+            Console.ReadKey();
         }
     }
 }
