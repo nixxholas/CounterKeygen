@@ -163,7 +163,7 @@ namespace CounterKeygen
             string result = bsh.SignRequest(method, url, args, privKey);
             Console.WriteLine("");
             Console.WriteLine("");
-
+            Console.WriteLine("Signed Request: " + result);
 
             Console.WriteLine("Please copy it and click any key to return to the menu!");
             Console.ReadKey();

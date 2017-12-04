@@ -2,7 +2,7 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="Helpers/BitcoreSignatureHelper.cs">
     <Files>
       <File FileName="Program.cs" Line="88" Column="92" />
-      <File FileName="Helpers/BitcoreSignatureHelper.cs" Line="67" Column="99" />
+      <File FileName="Helpers/BitcoreSignatureHelper.cs" Line="52" Column="30" />
       <File FileName="Helpers/BitcoinKeyHelper.cs" Line="21" Column="75" />
     </Files>
   </MonoDevelop.Ide.Workbench>

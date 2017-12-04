@@ -36,7 +36,10 @@ namespace CounterKeygen.Helpers
             reqList.Add(url);
             reqList.Add(args);
 
-            string message = String.Join('|', reqList);
+            string message = string.Join('|', reqList);
+
+            // Debugging only
+            //Console.WriteLine("Concatenated Message: " + message);
 
             return SignMessage(message, privKey);
         }
@@ -45,6 +48,10 @@ namespace CounterKeygen.Helpers
         {
             //$.checkArgument(text);
             string hashMsg = DoubleHashMessageReverse(msg);
+
+            // Debugging Only
+            //Console.WriteLine("Hashed Message: " + hashMsg);
+            //Console.WriteLine("Hashed Message in Bytes: " + BitConverter.ToString(Encoding.Unicode.GetBytes(hashMsg)));
 
             // Retrieve the private key in bigint
             BigInteger privateKeyInt = new BigInteger(+1, Encoding.Unicode.GetBytes(privKey));
@@ -55,13 +62,15 @@ namespace CounterKeygen.Helpers
 
             // Setup the signer
             // https://www.programcreek.com/java-api-examples/index.php?api=org.bouncycastle.crypto.signers.ECDSASigner
-            ECDsaSigner signer = new ECDsaSigner(new HMacDsaKCalculator(new Sha256Digest()));
+            // Cant new ECDsaSigner(new HMacDsaKCalculator(new Sha256Digest())); Because Btc doesn't use those..
+            ECDsaSigner signer = new ECDsaSigner();
 
             // Construct the ECDomainParameters
             // https://programtalk.com/java-api-usage-examples/org.bouncycastle.crypto.params.ECDomainParameters/ => How to get the parameters
             ECDomainParameters ecDomainParams = new ECDomainParameters(parameters.Curve, parameters.G, parameters.N, parameters.H);
+            ECKeyParameters keyParams = new ECPrivateKeyParameters(privateKeyInt, ecDomainParams);
 
-            signer.Init(true, new ECPrivateKeyParameters(privateKeyInt, ecDomainParams));
+            signer.Init(true, keyParams);
             BigInteger[] signature = signer.GenerateSignature(Encoding.Unicode.GetBytes(hashMsg));
 
             // https://stackoverflow.com/questions/37572306/verifying-ecdsa-signature-with-bouncy-castle-in-c-sharp
@@ -101,7 +110,7 @@ namespace CounterKeygen.Helpers
                 resultChars[i] = inputArr[inputArr.Length - 1 - i];
             }
 
-            return resultChars.ToString();
+            return new string(resultChars);
         }
     }
 }
