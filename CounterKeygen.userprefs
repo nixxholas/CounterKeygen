@@ -1,8 +1,10 @@
 ﻿<Properties StartupConfiguration="{A7A8D024-32D1-438F-A44C-1D73BC0FF92D}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Helpers/BitcoreSignatureHelper.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Helpers/BitcoinKeyHelper.cs">
     <Files>
-      <File FileName="Program.cs" Line="145" Column="17" />
-      <File FileName="Helpers/BitcoreSignatureHelper.cs" Line="53" Column="55" />
+      <File FileName="Program.cs" Line="141" Column="70" />
+      <File FileName="Helpers/BitcoreSignatureHelper.cs" Line="99" Column="14" />
+      <File FileName="Utils/SHA256Hash.cs" Line="17" Column="68" />
+      <File FileName="Helpers/BitcoinKeyHelper.cs" Line="62" Column="44" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

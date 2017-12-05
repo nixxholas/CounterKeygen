@@ -14,7 +14,7 @@ namespace CounterKeygen.Utils
         {
             using (var sha = SHA256.Create())
             {
-                var computedHash = sha.ComputeHash(Encoding.Unicode.GetBytes(input));
+                var computedHash = sha.ComputeHash(Encoding.Default.GetBytes(input));
                 return Convert.ToBase64String(computedHash);
             }
         }
