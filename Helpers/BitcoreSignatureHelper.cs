@@ -44,7 +44,7 @@ namespace CounterKeygen.Helpers
             return SignMessage(message, privKey);
         }
             
-        private string SignMessage(string msg, string privKey)
+        public string SignMessage(string msg, string privKey)
         {
             //$.checkArgument(text);
             string hashMsg = DoubleHashMessageReverse(msg);

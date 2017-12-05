@@ -25,6 +25,9 @@ namespace CounterKeygen
                 Console.WriteLine("4 - Generate a child key from an X Key");
                 Console.WriteLine("5 - Sign a bitcore wallet service request");
                 Console.WriteLine();
+                Console.WriteLine("--------- Bitcore Specific Functions ---------");
+                Console.WriteLine("20 - Sign a bitcore wallet service request");
+                Console.WriteLine();
                 Console.WriteLine("0 - Exit");
 
                 while (true)
@@ -49,6 +52,12 @@ namespace CounterKeygen
 
                                 goto BREAK;
                             case 5:
+                                Console.Clear();
+                                SignMessage();
+                                Console.Clear();
+
+                                goto BREAK;
+                            case 20:
                                 Console.Clear();
                                 SignBWSRequest();
                                 Console.Clear();
@@ -142,6 +151,26 @@ namespace CounterKeygen
 
                 Console.ReadKey();
             }
+        }
+
+        private static void SignMessage() {
+            Console.WriteLine("Please enter the message you would like to sign: ");
+            string msg = Console.ReadLine();
+            Console.WriteLine("Please enter the private key to sign this request: ");
+            string privKey = Console.ReadLine();
+
+            BitcoreSignatureHelper bsh = new BitcoreSignatureHelper();
+
+            Console.WriteLine("");
+            Console.WriteLine("==============================================");
+            Console.WriteLine("Generating the signed request...");
+            string result = bsh.SignMessage(msg, privKey);
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("Signed Request: " + result);
+
+            Console.WriteLine("Please copy it and click any key to return to the menu!");
+            Console.ReadKey();
         }
         
         private static void SignBWSRequest()
